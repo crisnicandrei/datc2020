@@ -1,23 +1,20 @@
 using System.Collections.Generic;
-
 namespace L02.webapi
 {
     public class StudentsRepo
-    { public static List<Student> Students = null;
-
+    { public   List<Student> Students  ;
         public StudentsRepo()
         {
-            Students = new List<Student>();
+        Students = new List<Student>();
+        Students.Add(new Student{Name="eu",Id=1,Faculty="AC"});
+        Students.Add(new Student{Name="Xulescu",Id=2,Faculty="Istorie"});
+        Students.Add(new Student{Name="Maria",Id=3,Faculty="PSIHO"});
         }
-
-        public static List<Student> GetStudents()
+        public void addStudent()
         {
-            return Students;
+            Students.Add(new Student{Name="Dani",Id=5,Faculty="nu"});
         }
-    
-        
+    }   
+
        
-        
-        
-    }
 }

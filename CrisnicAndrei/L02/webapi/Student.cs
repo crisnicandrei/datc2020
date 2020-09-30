@@ -6,11 +6,6 @@ namespace L02.webapi
        public int Id{get;set;}
        public string Faculty{get;set;}
 
-       public Student(string name,int id,string faculty)
-       {
-           Name = name;
-           Id = id;
-           Faculty = faculty;
-       }
+       
     }
 }
