@@ -13,17 +13,24 @@ namespace L02.webapi.Controllers
         {
             _logger = logger;        
         }
-
-       
-
-        
-       
-        
         [HttpGet]
         public List<Student> Get()
         {
             return students.Students;
         }
+        [HttpGet("{id}")]
+        public Student Get(int id)
+        {
+            foreach (Student student in students.Students)
+            {
+                if(student.Id == id)
+                {
+                    return student;
+                }
+            }
+            return null;
+        }
+        
         
         [HttpPost]
         
@@ -32,19 +39,37 @@ namespace L02.webapi.Controllers
             students.addStudent();
             return students.Students; //return pentru testare
         }
+    
+       [HttpDelete("{id}")]
+       public List<Student> Delete(int id)
+        {
+           foreach(Student student in students.Students)
+           {
+               if(student.Id == id)
+               {
+                   students.Students.Remove(student);
+                   return students.Students;
+               }
+
+
+           }
+           return null;
+        }
+       [HttpPut("{id}")]
+       public Student Update(int id)
+       {
+           foreach(Student student in students.Students)
+           {
+               if(student.Id == id)
+               {
+                   student.Nume = "Dorel";
+                   return student;
+               }
+           }
+           return null;
+           
+       }
     }
-    //     [HttpDelete]
-    //    public void Delete(int id)
-    //    {
-    //        foreach(Student student in StudentsRepo.Students)
-    //        {
-    //            if(student.Id == id)
-    //            {
-    //                StudentsRepo.Students.Remove(student);
-    //            }
-    //        }
-    //    }
-    //    [HttpPut]
 
     
 }
