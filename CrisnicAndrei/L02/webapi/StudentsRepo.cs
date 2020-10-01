@@ -10,12 +10,6 @@ namespace L02.webapi
         Students.Add(new Student{Nume="Xulescu",Prenume="Sorin",anStudiu=3,Id=2,Faculty="Istorie"});
         Students.Add(new Student{Nume="Maria",Prenume="Marescu",anStudiu=2,Id=3,Faculty="PSIHO"});
         }
-        public void addStudent()
-        {
-            Students.Add(new Student{Nume="Dani",Prenume="Dani",anStudiu=3,Id=5,Faculty="nu"});
-        }
-        
-       
     }   
 
        

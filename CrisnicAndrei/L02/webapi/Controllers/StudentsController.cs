@@ -8,6 +8,7 @@ namespace L02.webapi.Controllers
     public class StudentsController : ControllerBase
     {
         StudentsRepo students = new StudentsRepo();
+        
         private readonly ILogger<StudentsController> _logger;
         public StudentsController(ILogger<StudentsController> logger)
         {
@@ -34,10 +35,10 @@ namespace L02.webapi.Controllers
         
         [HttpPost]
         
-        public List<Student> Post()
+        public List<Student> Post( [FromBody] Student student)
         {
-            students.addStudent();
-            return students.Students; //return pentru testare
+            students.Students.Add(student) ;//return pentru testare
+            return students.Students;
         }
     
        [HttpDelete("{id}")]
@@ -56,13 +57,16 @@ namespace L02.webapi.Controllers
            return null;
         }
        [HttpPut("{id}")]
-       public Student Update(int id)
+       public Student Update(int id,[FromBody] Student studentUpdate)
        {
            foreach(Student student in students.Students)
            {
                if(student.Id == id)
                {
-                   student.Nume = "Dorel";
+                   student.Nume=studentUpdate.Nume;
+                   student.Prenume=studentUpdate.Prenume;
+                   student.Faculty=studentUpdate.Faculty;
+                   student.anStudiu=studentUpdate.anStudiu;
                    return student;
                }
            }
